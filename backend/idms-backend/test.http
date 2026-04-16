@@ -1,0 +1,31 @@
+### 1. Create Batch
+POST http://localhost:8081/api/batches?startDate=2025-01-01
+
+###
+
+### 2. Add Intern
+POST http://localhost:8081/api/interns/1
+Content-Type: application/json
+
+{
+  "name": "Shruti",
+  "email": "shruti@gmail.com",
+  "mobile": "9876543210",
+  "idCardType": "Premium",
+  "dateOfJoining": "2025-01-01"
+}
+
+###
+
+### 3. Get All Interns
+GET http://localhost:8081/api/interns
+
+###
+
+### 4. Search Intern
+GET http://localhost:8081/api/interns/search?name=shruti
+
+###
+
+### 5. Filter Intern
+GET http://localhost:8081/api/interns/filter?type=Premium

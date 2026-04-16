@@ -1,0 +1,45 @@
+.list-wrapper {
+  animation: fadeUp 0.5s ease-out;
+}
+
+.header-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.search-card {
+  max-width: 100%;
+  margin: 0 0 2rem 0;
+  padding: 1.5rem;
+}
+
+.search-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.search-input {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.search-btn {
+  width: auto;
+  white-space: nowrap;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  width: auto;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem !important;
+  color: var(--text-muted);
+  font-style: italic;
+}

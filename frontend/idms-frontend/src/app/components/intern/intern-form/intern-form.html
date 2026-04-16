@@ -1,0 +1,56 @@
+<div class="form-wrapper">
+  <div class="premium-card">
+    <div class="card-header">
+      <h2>Register New Intern</h2>
+      <p class="subtitle">Enter the intern's details below to enroll them.</p>
+    </div>
+
+    <div class="form-body">
+      <div class="form-group grid-2">
+        <div class="field">
+          <label>Full Name</label>
+          <input [(ngModel)]="intern.name" placeholder="E.g., John Doe" />
+        </div>
+        <div class="field">
+          <label>Email Address</label>
+          <input [(ngModel)]="intern.email" placeholder="john@example.com" type="email" />
+        </div>
+      </div>
+
+      <div class="form-group grid-2">
+        <div class="field">
+          <label>Mobile Number</label>
+          <input [(ngModel)]="intern.mobile" placeholder="+1 (555) 000-0000" type="tel" />
+        </div>
+        <div class="field">
+          <label>Internship Type</label>
+          <select [(ngModel)]="intern.type">
+            <option value="" disabled selected>Select Type</option>
+            <option>Free</option>
+            <option>Premium</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group grid-2">
+        <div class="field">
+          <label>Joining Date</label>
+          <input type="date" [(ngModel)]="intern.joiningDate" />
+        </div>
+        <div class="field">
+          <label>Assign Batch</label>
+          <select [(ngModel)]="intern.batchId">
+            <option value="" disabled selected>Select a batch</option>
+            <option *ngFor="let b of batches" [value]="b.id">
+              Batch #{{b.id}}
+            </option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-actions mt-4">
+        <button (click)="addIntern()" class="submit-btn">Enroll Intern</button>
+      </div>
+    </div>
+  </div>
+</div>

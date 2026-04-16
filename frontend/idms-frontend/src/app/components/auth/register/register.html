@@ -1,0 +1,41 @@
+<div class="auth-split-layout">
+  <!-- Visuals on Right for Register to alternate -->
+  <div class="auth-interaction">
+    <div class="auth-card">
+      <h2 class="welcome-text">Create Account</h2>
+      <p class="subtitle">Enter your details to join the organization platform.</p>
+
+      <form (ngSubmit)="register()" class="auth-form">
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">✉️</span>
+            <input type="email" placeholder="john@example.com" [(ngModel)]="user.email" name="email" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password Setup</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" placeholder="Create a strong password" [(ngModel)]="user.password" name="password" required>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn mt-4 pulse-hover">Sign Up Securely</button>
+
+        <div class="auth-footer mt-4">
+          <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="auth-visual">
+    <div class="visual-overlay"></div>
+    <div class="visual-content">
+      <h1 class="brand-title">Secure & Fast</h1>
+      <p class="brand-subtitle">Leverage our custom ID formatting to trace your interns effortlessly across global batches.</p>
+    </div>
+  </div>
+</div>

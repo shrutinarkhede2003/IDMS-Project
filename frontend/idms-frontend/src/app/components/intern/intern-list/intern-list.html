@@ -1,0 +1,90 @@
+<div class="list-wrapper">
+
+  <div class="header-action">
+    <h2>Intern Directory</h2>
+  </div>
+
+  <div class="premium-card search-card">
+    <div class="search-bar" style="display: flex; gap: 1rem; align-items: flex-end;">
+      <div style="flex: 1;">
+        <label style="font-size: 0.8rem; color: #94a3b8;">Search Name</label>
+        <input type="text" [(ngModel)]="searchText" placeholder="Name..." class="search-input" style="margin-bottom:0">
+      </div>
+      <div style="flex: 1;">
+        <label style="font-size: 0.8rem; color: #94a3b8;">Filter Batch</label>
+        <select [(ngModel)]="searchBatch" class="search-input" style="margin-bottom:0">
+          <option value="">All Batches</option>
+          <!-- assuming batches array exists, if not it can just be typed, but usually we map it if available -->
+          <option value="1">Batch 1</option>
+          <option value="2">Batch 2</option>
+        </select>
+      </div>
+      <div style="flex: 1;">
+        <label style="font-size: 0.8rem; color: #94a3b8;">Filter Type</label>
+        <select [(ngModel)]="searchType" class="search-input" style="margin-bottom:0">
+          <option value="">All Types</option>
+          <option value="Free">Free</option>
+          <option value="Premium">Premium</option>
+        </select>
+      </div>
+      <button (click)="search()" class="search-btn">
+        <span class="icon">🔍</span> Search
+      </button>
+    </div>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Batch ID</th>
+          <th>Name & Contact</th>
+          <th>Batch</th>
+          <th>Card Type</th>
+          <th>Joined</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let i of interns">
+          <td style="color: var(--primary-accent); font-weight: bold;">{{i.internId || ('#' + i.id)}}</td>
+
+          <td *ngIf="editingId !== i.id">
+            <div>{{i.name}}</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted)">{{i.email}} | {{i.mobile}}</div>
+          </td>
+          <td *ngIf="editingId === i.id">
+            <input [(ngModel)]="editData.name" placeholder="Name" class="search-input"
+              style="padding: 0.2rem; margin-bottom: 0.2rem;" />
+            <input [(ngModel)]="editData.email" placeholder="Email" class="search-input"
+              style="padding: 0.2rem; margin-bottom: 0.2rem;" />
+            <input [(ngModel)]="editData.mobile" placeholder="Mobile" class="search-input"
+              style="padding: 0.2rem; margin-bottom: 0;" />
+          </td>
+
+          <td>Batch {{i.batch?.id}}</td>
+          <td>{{i.type}}</td>
+          <td>{{i.joiningDate | date:'mediumDate'}}</td>
+          <td><span class="badge">Active</span></td>
+          <td>
+            <ng-container *ngIf="editingId !== i.id">
+              <button class="btn-sm" style="background-color: var(--primary-accent); margin-right: 0.5rem;"
+                (click)="edit(i)">Edit</button>
+              <button class="danger btn-sm" (click)="delete(i.id)">Remove</button>
+            </ng-container>
+            <ng-container *ngIf="editingId === i.id">
+              <button class="btn-sm" style="background-color: #22c55e; margin-right: 0.5rem;"
+                (click)="saveEdit()">Save</button>
+              <button class="danger btn-sm" (click)="cancelEdit()">Cancel</button>
+            </ng-container>
+          </td>
+        </tr>
+
+        <tr *ngIf="interns.length === 0">
+          <td colspan="7" class="empty-state">No interns found based on filters.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

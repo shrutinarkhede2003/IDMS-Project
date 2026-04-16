@@ -1,0 +1,10 @@
+@import '../login/login.css'; /* Reuse the exact same robust layout classes */
+
+.auth-visual {
+  /* Invert gradient for register visual side */
+  background: url('/auth-bg.png') right/cover no-repeat;
+}
+
+.visual-overlay {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(15, 23, 42, 0.9));
+}

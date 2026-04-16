@@ -1,0 +1,25 @@
+<div class="form-wrapper">
+  <div class="premium-card">
+    <div class="card-header">
+      <h2>Create New Batch</h2>
+      <p class="subtitle">Set the start and end dates for the upcoming batch.</p>
+    </div>
+
+    <div class="form-body">
+      <div class="form-group grid-2">
+        <div class="field">
+          <label>Start Date</label>
+          <input type="date" [(ngModel)]="batch.startDate" />
+        </div>
+        <div class="field">
+          <label>End Date</label>
+          <input type="text" value="+ 6 Months Automatically" disabled />
+        </div>
+      </div>
+
+      <div class="form-actions mt-4">
+        <button (click)="createBatch()" class="submit-btn">Create Batch</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="list-wrapper">
+
+  <div class="header-action">
+    <h2>Batch Overview</h2>
+  </div>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Batch ID</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Total Interns</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let batch of batches">
+          <td><strong>#BCH-{{ batch.id }}</strong></td>
+          <td>{{ batch.startDate | date:'mediumDate' }}</td>
+          <td>{{ batch.endDate | date:'mediumDate' }}</td>
+          <td><span class="badge in-progress">In Progress</span></td>
+          <td style="color: var(--primary-accent)">
+            <strong>{{ batch.interns?.length || 0 }} Interns</strong>
+            <div *ngIf="batch.interns?.length > 0"
+              style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-secondary)">
+              <div *ngFor="let intern of batch.interns">
+                <span style="color: white">{{intern.name}}</span> ({{intern.type}})
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr *ngIf="batches.length === 0">
+          <td colspan="5" class="empty-state">No batches available.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

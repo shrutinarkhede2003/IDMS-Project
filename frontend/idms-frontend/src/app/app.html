@@ -1,0 +1,24 @@
+<header class="app-header" *ngIf="currentUrl !== '/login' && currentUrl !== '/register'">
+  <div class="header-container">
+    <div class="brand">
+      <span class="logo-icon">✨</span>
+      <h1>IDMS</h1>
+    </div>
+    
+    <nav class="main-nav">
+      <a routerLink="/interns" routerLinkActive="active">Intern Directory</a>
+      <a routerLink="/add-intern" routerLinkActive="active">Add Intern</a>
+      <a routerLink="/batches" routerLinkActive="active">Batch Overview</a>
+      <a routerLink="/add-batch" routerLinkActive="active">Create Batch</a>
+    </nav>
+    
+    <div class="user-actions">
+      <!-- We can add a logout button or user profile here if needed later -->
+      <a routerLink="/login" class="nav-logout">Logout</a>
+    </div>
+  </div>
+</header>
+
+<main [ngStyle]="(currentUrl === '/login' || currentUrl === '/register') ? {'max-width': '100%', 'padding': '0', 'margin': '0'} : {}">
+  <router-outlet></router-outlet>
+</main>
